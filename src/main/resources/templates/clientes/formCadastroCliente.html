@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Cadastro de clientes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- CSS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+    <body>
+        <header th:replace="~{index :: menu}"></header>
+        
+        <section class="pt-3">
+            <div class="container" th:if="${teste}"  th:each="cliente : ${teste}">
+                
+                <h1>Cadastro de cliente</h1>                
+                <form method="post" action="/cadastrarcliente">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default" style="width: 5.2em">Nome</span>
+                            </div>
+                            <input type="hidden" th:value="${cliente.id}" name="id">
+                            <input type="text" th:value="${cliente.nome}" class="form-control" name="nome" placeholder="Digite o nome..." required='required'>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="inputGroup-sizing-default" >Endereço</span>
+                            </div>
+                            <input type="text" th:value="${cliente.endereco}" class="form-control" name="endereco" placeholder="Digite o endereço..." required='required'>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Número</span>
+                            </div>
+                                <input type="text" th:value="${cliente.numero}" class="form-control" name="numero" placeholder="Digite o número..." required='required'>
+                          </div>
+                        </div>
+                        <div class="col-md-6">                          
+                            <button type="submit" class="btn btn-success mr-5" value="Cadastrar" style="float:right">Cadastrar</button>
+                        </div>
+                        
+                        
+                    </div>
+                </form>
+            </div>
+            
+            
+            
+            <div class="container" th:unless="${teste}">
+                
+                <h1>Cadastro de cliente</h1>                
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default" style="width: 5.2em">Nome</span>
+                            </div>
+                            <input type="text" class="form-control" name="nome" placeholder="Digite o nome..." required='required'>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="inputGroup-sizing-default" >Endereço</span>
+                            </div>
+                            <input type="text" class="form-control" name="endereco" placeholder="Digite o endereço..." required='required'>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Número</span>
+                            </div>
+                                <input type="text" class="form-control" name="numero" placeholder="Digite o número..." required='required'>
+                          </div>
+                        </div>
+                        <div class="col-md-6">                          
+                            <button type="submit" class="btn btn-success mr-5" value="Cadastrar" style="float:right">Cadastrar</button>
+                        </div>
+                        
+                        
+                    </div>
+                </form>
+            </div>            
+            
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        
+    </body>
+</html>

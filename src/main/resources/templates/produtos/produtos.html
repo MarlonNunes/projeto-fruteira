@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Clientes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <header th:replace="~{index :: menu}"></header>
+
+
+    <section class="pt-3">
+        <div class="container" >
+
+            <h1 th:if="${mensagem}" th:text="'Produtos de ' + ${mensagem}"></h1>
+            <form action="/produtos/ver" method="post">
+                <div class="input-group mb-3 pt-3" style=" width:400px">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Nome</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="digite aqui" name="nome">
+                    <button type="submit" class="btn btn-success pl-3" value="buscar">Buscar</button>
+                </div>
+            </form>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="table-success" scope="col">id</th>
+                    <th class="table-success" scope="col">Nome</th>
+                    <th class="table-success" scope="col">Quantidade</th>
+                    <th class="table-success" scope="col">Preço Compra</th>
+                    <th class="table-success" scope="col">Preço Revenda</th>
+                    <th class="table-success d-flex justify-content-center" scope="col" >Apagar</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr class="linha" th:each="produto : ${produtos}">
+                    <th><a th:href="@{/editar/{id} (id = ${produto.id})}"><span  th:text="${produto.id}"></span></a></th>
+                    <td><span class="nome" th:value="${produto.id}" th:text="${produto.nome}"></span></td>
+                    <td th:text="${produto.quantidade}"></td>
+                    <td th:text="${produto.precoCompra}"></td>
+                    <td th:text="${produto.precoRevenda}"></td>
+                    <td><a th:href="@{excluircliente/{id} (id = ${produto.id})}"><span class="material-icons d-flex justify-content-center">delete</span></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script type="text/javascript" src="jquery.js"></script>
+</body>
+</html>
