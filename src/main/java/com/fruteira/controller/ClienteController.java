@@ -42,13 +42,13 @@ public class ClienteController {
     
     }
     
-   @GetMapping(value = "/cadastrarcliente")
+   @GetMapping(value = "/cadastrar")
    public String getFormCadastroCliente(){
        return "clientes/FormCadastroCliente";
    
    }
    
-   @PostMapping(value = "/cadastrarcliente")
+   @PostMapping(value = "/cadastrar")
    public String saveCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attributes){
        if(result.hasErrors()){
            return "redirect:/cadastrarcliente";

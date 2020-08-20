@@ -19,12 +19,12 @@ public class ProdutoController {
     @Autowired
     ProdutoService produtoService;
 
-    @GetMapping(value = "/cadastrarproduto")
+    @GetMapping(value = "/cadastrar")
     public String cadastroProduto(){
         return "Produtos/formCadastroProduto";
     }
 
-    @PostMapping(value = "/cadastrarproduto")
+    @PostMapping(value = "/cadastrar")
     public String cadastrarProduto(@Valid Produto produto){
         try{
             produtoService.save(produto);
