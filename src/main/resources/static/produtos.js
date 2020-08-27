@@ -19,8 +19,9 @@ function selecionar(id){
     var quantidade = linhas[id].children[2].innerHTML;
     var precoCompra = linhas[id].children[3].innerHTML;
     var precoRevenda = linhas[id].children[4].innerHTML;
+    var tipo = linhas[id].children[5].innerHTML
 
-    atribuiValue(nome, quantidade, precoCompra, precoRevenda, id2);
+    atribuiValue(nome, quantidade, precoCompra, precoRevenda, id2, tipo);
 
         }
 
@@ -31,12 +32,13 @@ function lucro(precoCompra, precoRevenda, quantidade){
     return precoLiquido;
 }
 
-function atribuiValue(nome, quantidade, precoCompra, precoRevenda, id){
+function atribuiValue(nome, quantidade, precoCompra, precoRevenda, id, tipo){
      document.getElementById("recebeNome").value= nome;
      document.getElementById("recebeQnt").value= quantidade;
      document.getElementById("precoCompra").value= precoCompra;
      document.getElementById("precoRevenda").value= precoRevenda;
      document.getElementById("recebeID").value= id;
+     document.getElementById("recebeTipo").value= tipo;
 
 
      liquido = parseFloat(lucro(precoCompra, precoRevenda, quantidade).toFixed(2));

@@ -11,5 +11,6 @@ public interface HortifrutiService {
     List<Hortifruti> findByTipoContainingIgnoreCase(String tipo);
     Hortifruti findById(Integer id);    
     Hortifruti save(Hortifruti hortifruti);
-    
+    void deleteById(Integer id);
+    List<Hortifruti> findByNome(String nome);
 }

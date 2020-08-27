@@ -11,4 +11,5 @@ import java.util.List;
 public interface HortifrutiRepository extends JpaRepository<Hortifruti, Integer> {
 
     List<Hortifruti> findByTipoContainingIgnoreCase(String tipo);
+    List<Hortifruti> findByNomeContainingIgnoreCase(String nome);
 }

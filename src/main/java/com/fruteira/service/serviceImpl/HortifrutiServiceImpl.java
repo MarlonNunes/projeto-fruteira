@@ -32,5 +32,15 @@ public class HortifrutiServiceImpl implements HortifrutiService {
     public Hortifruti save(Hortifruti hortifruti) {
         return hortifrutiRepository.save(hortifruti);
     }
-    
+
+    @Override
+    public void deleteById(Integer id) {
+        hortifrutiRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Hortifruti> findByNome(String nome) {
+        return hortifrutiRepository.findByNomeContainingIgnoreCase(nome);
+    }
+
 }

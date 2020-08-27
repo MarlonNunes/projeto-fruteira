@@ -5,9 +5,7 @@ import com.fruteira.service.HortifrutiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -43,6 +41,14 @@ public class HortifrutiController {
         }
     }
 
+    @PostMapping(value = "/ver")
+    public ModelAndView hortifrutiWhere(@RequestParam("nome") String nome){
+        ModelAndView view = new ModelAndView("hortifruti/hortifruti");
+        List<Hortifruti> hortifruti = hortifrutiService.findByNome(nome);
+        view.addObject("hortifruti", hortifruti);
+        return view;
+    }
+
     @GetMapping(value = "/frutas")
     public ModelAndView frutas(){
         ModelAndView view = new ModelAndView("hortifruti/hortifruti");
@@ -68,5 +74,25 @@ public class HortifrutiController {
         view.addObject("hortifruti",hortifruti);
         view.addObject("mensagem", "Verduras");
         return view;
+    }
+
+    @GetMapping(value = "/excluir/{id}")
+    public String excluir(@PathVariable("id") Integer id){
+        try {
+            hortifrutiService.deleteById(id);
+                return "redirect:/hortifruti/frutas";
+        }catch(Exception e){
+            return "redirect:/";
+        }
+    }
+
+    @PostMapping(value = "/atualizar")
+    public String atualizar(@Valid Hortifruti hortifruti){
+        try {
+            hortifrutiService.save(hortifruti);
+            return "redirect:/hortifruti" + hortifruti.getTipo() + "s";
+        }catch (Exception e){
+            return "redirect:/";
+        }
     }
 }

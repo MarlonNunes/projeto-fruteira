@@ -19,7 +19,7 @@
     <div class="container" >
 
         <h1 th:if="${mensagem}" th:text="${mensagem}"></h1>
-        <form action="/produtos/ver" method="post">
+        <form action="/hortifruti/ver" method="post">
             <div class="input-group mb-3 pt-3" style=" width:400px">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Nome</span>
@@ -37,31 +37,34 @@
                 <th class="table-success" scope="col">Quilos</th>
                 <th class="table-success" scope="col">Preço Compra</th>
                 <th class="table-success" scope="col">Preço Revenda</th>
+                <th class="table-success" scope="col">Tipo</th>
+
                 <th class="table-success d-flex justify-content-center" scope="col" >Apagar</th>
             </tr>
 
             </thead>
             <tbody>
             <tr class="linha" th:each="produto : ${hortifruti}" onclick="selecionar(id)">
-                <th><a th:href="@{/editar/{id} (id = ${produto.id})}"><span  th:text="${produto.id}"></span></a></th>
+                <th th:text="${produto.id}"></th>
                 <td><span class="nome" th:value="${produto.id}" th:text="${produto.nome}"></span></td>
                 <td th:text="${produto.quilos}"></td>
                 <td th:text="${produto.precoCompra}"></td>
                 <td th:text="${produto.precoRevenda}"></td>
-                <td><a th:href="@{excluircliente/{id} (id = ${produto.id})}"><span class="material-icons d-flex justify-content-center">delete</span></a></td>
+                <td th:text="${produto.tipo}"></td>
+                <td><a th:href="@{/hortifruti/excluir/{id} (id = ${produto.id})}"><span class="material-icons d-flex justify-content-center">delete</span></a></td>
             </tr>
             </tbody>
         </table>
 
         <h4> Produto selecionado </h4>
-        <form method="post" action="/produtos/atualizar">
+        <form method="post" action="/hortifruti/atualizar">
             <div class="row">
                 <div class="col-md-6">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Nome</span>
                         </div>
-                        <input type="text" id="recebeNome" class="form-control" name="nomeS" aria-describedby="basic-addon1">
+                        <input type="text" id="recebeNome" class="form-control" name="nome" aria-describedby="basic-addon1">
                     </div>
                 </div>
 
@@ -84,6 +87,7 @@
                         <span class="input-group-text">Atualizar preço de compra</span>
                         <input type="number" step="0.05" class="form-control" placeholder="0,00" min="0" required="true" id="precoCompra" name="precoCompra">
                         <input type="hidden" name="id" id="recebeID">
+                        <input type="hidden" name="tipo" id="recebeTipo">
                     </div>
                 </div>
 
