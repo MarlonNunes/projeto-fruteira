@@ -4,8 +4,9 @@ import com.fruteira.model.Produto;
 import com.fruteira.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -43,14 +44,6 @@ public class ProdutoController {
         }
     }
 
-    @PostMapping(value= "/ver")
-    public ModelAndView produtoWhere(@RequestParam("nome") String nome){
-        ModelAndView view = new ModelAndView("produtos/produtos");
-        List<Produto> produto = produtoService.findByNome(nome);
-        view.addObject("produtos", produto);
-        return view;
-    }
-
     @GetMapping(value = "/limpeza")
     public ModelAndView limpeza(){
         ModelAndView view = new ModelAndView("produtos/produtos");
@@ -86,27 +79,4 @@ public class ProdutoController {
 
         return view;
     }
-
-    @GetMapping(value = "/excluir/{id}")
-    public String excluir(@PathVariable("id") Integer id){
-        try{
-            produtoService.deleteById(id);
-            return "redirect:/produtos/limpeza";
-        }catch (Exception e) {
-            return "redirect:/index";
-        }
-    }
-
-    @PostMapping(value = "/atualizar")
-    public String atualizar(@Valid Produto produto){
-        try {
-            if (produtoService.findById(produto.getId()) != null) {
-                produtoService.save(produto);
-            }
-            return "redirect:/produtos/" + produto.getTipo() + "s";
-        }catch (Exception e){
-            return "redirect:/index";
-        }
-    }
-
 }
