@@ -19,6 +19,11 @@ public class HortifrutiServiceImpl implements HortifrutiService {
     }
 
     @Override
+    public List<Hortifruti> findByTipoContainingIgnoreCase(String tipo) {
+        return hortifrutiRepository.findByTipoContainingIgnoreCase(tipo);
+    }
+
+    @Override
     public Hortifruti findById(Integer id) {
         return hortifrutiRepository.findById(id).get();
     }

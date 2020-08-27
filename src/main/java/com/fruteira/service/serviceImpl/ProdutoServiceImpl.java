@@ -24,6 +24,11 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
+    public List<Produto> findByNome(String nome) {
+        return produtoRepository.findByNomeContainingIgnoreCase(nome);
+    }
+
+    @Override
     public Produto findById(Integer id) {
         return produtoRepository.findById(id).get();
     }
@@ -32,5 +37,10 @@ public class ProdutoServiceImpl implements ProdutoService {
     public Produto save(Produto produto) {
         return produtoRepository.save(produto);
     }
-    
+
+    @Override
+    public void deleteById(Integer id) {
+        produtoRepository.deleteById(id);
+    }
+
 }

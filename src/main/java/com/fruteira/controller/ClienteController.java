@@ -51,7 +51,7 @@ public class ClienteController {
    @PostMapping(value = "/cadastrar")
    public String saveCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attributes){
        if(result.hasErrors()){
-           return "redirect:/cadastrarcliente";
+           return "redirect:/clientes/cadastrar";
        }
        
        clienteService.save(cliente);
@@ -64,7 +64,7 @@ public class ClienteController {
     public String excluirAluno(@PathVariable Integer id, RedirectAttributes atributo){
         try{
             clienteService.deleteById(id);
-            return "redirect:/clientes";
+            return "redirect:/clientes/ver";
         }catch(Exception e){
             return "redirect:/home/";
         }        
@@ -73,7 +73,7 @@ public class ClienteController {
     
    @GetMapping(value="/editar/{id}")
    public ModelAndView editarCliente(@PathVariable Integer id){
-       ModelAndView view = new ModelAndView("formCadastroCliente");
+       ModelAndView view = new ModelAndView("clientes/formCadastroCliente");
        Cliente cliente = clienteService.findById(id);
        view.addObject("teste", cliente);
        return view;

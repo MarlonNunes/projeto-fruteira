@@ -13,11 +13,6 @@ function selecionar(id){
     mostrarBotoes();
 
 
-
-
-
-
-
 }
 
 
@@ -36,6 +31,7 @@ function idLinhas(){
 function atribuiValue(nome, id, divida){
      document.getElementById("recebeNome").value= nome;
      document.getElementById("recebeID").value= id;
+     document.getElementById("recebeID2").value= id;
      document.getElementById("recebeDivida").innerHTML= divida;
 
 }

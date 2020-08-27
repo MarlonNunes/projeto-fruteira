@@ -32,7 +32,12 @@ public class Cliente {
     @OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
     private List<Compra> compras = new ArrayList<>();
     
-    private BigDecimal divida = new BigDecimal("0");
+    private BigDecimal divida;
+
+    public Cliente(){
+
+        this.divida = new BigDecimal("0");
+    }
 
     public Integer getId() {
         return id;

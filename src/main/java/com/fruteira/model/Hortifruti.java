@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -12,29 +13,29 @@ public class Hortifruti {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_horti;
+    private Integer id;
     
-    @NotBlank
+    @NotNull
     private String nome;
     
-    @NotBlank
+    @NotNull
     private double quilos;
     
-    @NotBlank
+    @NotNull
     private double precoCompra;
     
-    @NotBlank
+    @NotNull
     private double precoRevenda;
     
-    @NotBlank
+    @NotNull
     private String tipo;
 
-    public Integer getId_horti() {
-        return id_horti;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_horti(Integer id_horti) {
-        this.id_horti = id_horti;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

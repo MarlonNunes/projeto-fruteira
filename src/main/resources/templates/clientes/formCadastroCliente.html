@@ -16,7 +16,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
             <div class="container" th:if="${teste}"  th:each="cliente : ${teste}">
                 
                 <h1>Cadastro de cliente</h1>                
-                <form method="post" action="/cadastrarcliente">
+                <form method="post" action="/clientes/cadastrar">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="input-group mb-3">

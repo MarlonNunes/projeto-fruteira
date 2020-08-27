@@ -9,8 +9,10 @@ public interface ProdutoService {
     
     List<Produto> findAll();
     List<Produto> findByTipoContainingIgnoreCase(String tipo);
-    Produto findById(Integer id);    
+    List<Produto> findByNome(String nome);
+    Produto findById(Integer id);
     Produto save(Produto produto);
+    void deleteById(Integer id);
 
     
 }

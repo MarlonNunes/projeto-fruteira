@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 @Service
 public interface HortifrutiService {
     
-    List<Hortifruti> findAll();    
+    List<Hortifruti> findAll();
+    List<Hortifruti> findByTipoContainingIgnoreCase(String tipo);
     Hortifruti findById(Integer id);    
     Hortifruti save(Hortifruti hortifruti);
     
