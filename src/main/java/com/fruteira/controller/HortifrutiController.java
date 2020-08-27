@@ -90,7 +90,7 @@ public class HortifrutiController {
     public String atualizar(@Valid Hortifruti hortifruti){
         try {
             hortifrutiService.save(hortifruti);
-            return "redirect:/hortifruti" + hortifruti.getTipo() + "s";
+            return "redirect:/hortifruti/" + hortifruti.getTipo() + "s";
         }catch (Exception e){
             return "redirect:/";
         }
