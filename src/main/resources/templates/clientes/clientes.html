@@ -43,11 +43,11 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     </thead>
                     <tbody>
                       <tr class="linha" th:each="cliente : ${clientes}" onClick="selecionar(id)">
-                        <th><a th:href="@{/clientes/editar/{id} (id = ${cliente.id})}"><span  th:text="${cliente.id}"></span></a></th>
+                        <th><a th:href="@{/editar/{id} (id = ${cliente.id})}"><span  th:text="${cliente.id}"></span></a></th>
                         <td><span class="nome" th:value="${cliente.id}" th:text="${cliente.nome}"></span></td>
                         <td id="endereco" th:text="${cliente.endereco}"></td>
                         <td th:text="${cliente.numero}"></td>
-                        <td><a th:href="@{/compras/detalhesCompras/{id} (id = ${cliente.id}) }"><span th:text="${cliente.divida}"></span></a></td>
+                        <td><a th:href="@{/detalhesCompras/{id} (id = ${cliente.id}) }"><span th:text="${cliente.divida}"></span></a></td>
                         <td><a th:href="@{excluircliente/{id} (id = ${cliente.id})}"><span class="material-icons d-flex justify-content-center">delete</span></a></td>
                       </tr>
                     </tbody>
@@ -81,7 +81,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                  <div class="row">
                      
                     <div class="botao col-md-6" style="display:none">
-                        <form action="/compras/compra" method="post">
+                        <form action="compra" method="post">
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Adicionar na conta</span>
                                 <input type="number" step="0.05" class="form-control" placeholder="0,00" name="valor" min="0" required="true">
@@ -94,7 +94,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     </div>
                     
                     <div class="botao col-md-6" style="display:none">
-                        <form action="/compras/pagar" method="post">
+                        <form action="pagar" method="post">
                             <div class="input-group mb-3">
                            <span class="input-group-text">Adicionar pagamento</span>
                            <input type="number" step="0.05" class="form-control" placeholder="0,00" name="valor" min="0" required="true">
@@ -111,7 +111,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
             
             
             
-            </div>
+            
             
         </section>
         
@@ -128,6 +128,6 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="../clientes.js"></script>
+        <script type="text/javascript" src="../jquery.js"></script>
     </body>
 </html>
