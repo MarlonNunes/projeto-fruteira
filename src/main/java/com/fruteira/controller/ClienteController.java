@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping(value = "clientes")
+@RequestMapping(value = "/clientes")
 public class ClienteController {
     
     @Autowired
@@ -43,8 +43,8 @@ public class ClienteController {
     }
     
    @GetMapping(value = "/cadastrar")
-   public String getFormCadastroCliente(){
-       return "clientes/FormCadastroCliente";
+   public String cadastrar(){
+       return "clientes/formCadastroCliente";
    
    }
    

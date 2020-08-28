@@ -12,15 +12,15 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "produtos")
+@RequestMapping(value = "/produtos")
 public class ProdutoController {
 
     @Autowired
     ProdutoService produtoService;
 
     @GetMapping(value = "/cadastrar")
-    public String cadastroProduto(){
-        return "Produtos/formCadastroProduto";
+    public String cadastrar(){
+        return "produtos/formCadastroProduto";
     }
 
     @PostMapping(value = "/cadastrar")
